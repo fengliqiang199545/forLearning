@@ -1,7 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="basePath" value="${pageContext.request.contextPath}"></c:set>
+
 <html>
+<head>
+    <script src="${basePath}/jquery/jquery-3.2.1.min.js"></script>
+</head>
 <body>
 <h2>Hello World!</h2>
+<br><br>
+
+<button id="testAjaxDataPost">TestAjaxDataPost</button>
+
+<br><br>
 
 
 <%--<h3><a href="first/testParams?username=flq">testParams</a></h3>--%>
@@ -72,6 +83,77 @@
     <input type="submit" value="submit">
 </form>
 
+<button id="testajax">Test ajax</button>
+
+<h2 id="testAjaxPost" style="color:#FF0000;">TestAajxPost</h2>
+
+
 <a href="/first/testException?num=2"> testException</a>
 </body>
 </html>
+<script type="application/javascript">
+    $(function () {
+
+
+
+    // $("#testAjaxPost").click(function () {
+    //     // $.get("/first/testAjax",'',function (data) {
+    //     //     alert("json 数据获取成功");
+    //     //     alert(data.id);
+    //     //     alert(data.name);
+    //     //     alert(data.email);
+    //     //     alert(data.address.country);
+    //     //     alert(data.address.city);
+    //     // })
+    //
+    //     $.ajax({
+    //         url:"first/testAjaxPost",
+    //         type:"post",
+    //         dataType:"json",
+    //         data:{
+    //             "id":22,
+    //             "name":"testAjaxPost",
+    //             "email":"testAjaxPost@qq.com",
+    //             "country":"china",
+    //             "city":"beijing"
+    //         },
+    //         error: function (XMLHttpResponse, textStatus, errorThrown) {
+    //             alert("出错了！！");
+    //             console.log("1 异步调用返回失败,XMLHttpResponse.readyState:"+XMLHttpResponse.readyState);
+    //             console.log("2 异步调用返回失败,XMLHttpResponse.status:"+XMLHttpResponse.status);
+    //             console.log("3 异步调用返回失败,textStatus:"+textStatus);
+    //             console.log("4 异步调用返回失败,errorThrown:"+errorThrown);
+    //
+    //         },
+    //         success: function (data) {
+    //             alert(data.msg);
+    //         }
+    //     });
+    // })
+
+
+        $("#testAjaxDataPost").click(function () {
+            var postData = {
+                "id":34,
+                "name":"fengliqiang",
+                "password":"199545"
+            }
+           $.ajax({
+               async:false,
+               cache:false,
+               url:"first/testAjaxDataPost",
+               type:"post",
+               dataType:"json",
+               contentType:"application/json",
+               data:JSON.stringify(postData),
+               success: function (data) {
+                   alert(data.msg);
+               },
+               error: function () {
+                   alert("出错了！！");
+               }
+           })
+        });
+
+    })
+</script>

@@ -33,6 +33,8 @@
         <!--<bean class="cn.com.taiji.intercepter.MyInterceptor"></bean>-->
     <!--</mvc:interceptors>-->
 
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
+
     <!-- 直接响应转发的页面，而无需经过handler -->
     <mvc:view-controller path="/view" view-name="success"></mvc:view-controller>
 
