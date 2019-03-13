@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -205,6 +206,15 @@ public class HelloController {
         Map<String,String> mapResult = new HashMap<>();
         mapResult.put("msg","数据发送解析成功！！");
         return mapResult;
+    }
+
+
+    @RequestMapping("testFileUpload")
+    public String testFileUpload(@RequestParam("file")MultipartFile file,@RequestParam("desc")String desc) throws Exception{
+        System.out.println("desc : " +  desc);
+        System.out.println("OriginalFilename : " + file.getOriginalFilename());
+        System.out.println("getInputStream : " + file.getInputStream());
+        return SUCCESS;
     }
 
 }

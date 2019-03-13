@@ -45,6 +45,16 @@
     <%--<input type="submit">--%>
 <%--</form>--%>
 
+<br>
+<form action="/first/testFileUpload" enctype="multipart/form-data" method="post">
+    File: <input type="file" name="file">
+    <br>
+    desc: <input type="text" name="desc">
+    <br>
+    <input type="submit" name="submit" value="submit">
+</form>
+<br>
+
 <h2><a href="first/testRequestParam">测试登录</a></h2>
 
 <h1><a href="first/testHeader">测试请求头</a></h1>
